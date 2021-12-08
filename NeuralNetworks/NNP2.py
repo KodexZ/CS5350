@@ -28,8 +28,6 @@ class ThreeNeuralNetwork:
             return self.vec[i]
         wgt = self.wghts[layer][i]
         prev = self.__get_neuron_vector__(layer-1)
-        if layer == 3:
-            return np.dot(wgt, prev)
         return sigmoid(np.dot(wgt, prev))
         
     @lru_cache(None)
@@ -41,7 +39,7 @@ class ThreeNeuralNetwork:
         
         
 NN = ThreeNeuralNetwork(3, 1, 2)
-NN.vec = np.array([1, 1, 1])
+NN.vec = np.array([-.6, .5, .1])
 NN.wghts[1][1] = np.array([-1, -2, -3])
 NN.wghts[1][2] = np.array([1, 2, 3])
 NN.wghts[2][1] = np.array([-1, -2, -3])
