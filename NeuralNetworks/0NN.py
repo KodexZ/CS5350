@@ -12,9 +12,9 @@ class ThreeNeuralNetwork:
         self.n_features = n_features
         self.olrate = lrate
         for j in range(1, h_size):
-            self.wghts[1][j] = normal(size=1+n_features) #np.full(1 + n_features, i_wgt)
-            self.wghts[2][j] = normal(size=h_size) #np.full(h_size, i_wgt)
-        self.wghts[3][1] = normal(size=h_size) #np.full(h_size, i_wgt)
+            self.wghts[1][j] = np.full(1 + n_features, 0)
+            self.wghts[2][j] = np.full(h_size, 0)
+        self.wghts[3][1] = np.full(h_size, 0)
 
         
         for i in range(0, epoch):
@@ -141,7 +141,7 @@ def process_data(csvpath):
     train['y'] = train['y'].replace(0, -1)
     test['y'] = test['y'].replace(0, -1)
     print(train.head())
-    c = ThreeNeuralNetwork(10, len(train.columns) - 1, train)
+    c = ThreeNeuralNetwork(100, len(train.columns) - 1, train)
     print(c.get_error(train))
     print(c.get_error(test))
     
